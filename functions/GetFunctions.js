@@ -1,5 +1,4 @@
 const url = "http://localhost:3001";
-// const url = "https://startuplookup.herokuapp.com";
 
 export const getStartUps =async () => {
     try{

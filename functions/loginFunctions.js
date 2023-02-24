@@ -1,4 +1,3 @@
-// const url = "https://startuplookup.herokuapp.com";
 const url = "http://localhost:3001"
 
 export const createUser = async(payload)=>{
