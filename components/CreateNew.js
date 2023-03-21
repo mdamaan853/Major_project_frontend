@@ -49,11 +49,8 @@ const CreateNew = () => {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (gender === "") {
-            alert("Enter your gender");
-            return;
-        }
+        // e.preventDefault();
+        
         const payload = {
             firstname,
             lastname,
@@ -70,15 +67,16 @@ const CreateNew = () => {
                 payload.typeOfInvester = typeOfInvester,
                 payload.interests = interest
         }
+        console.log(payload)
         const res = await createUser(payload);
         console.log(res)
-        // if (res?.success) {
+        if (res?.success) {
             // clear();
-            // alert("Account Created Successfully");
-            // Router.push('/login/login')
+            alert("Account Created Successfully");
+            Router.push('/login/login')
             // const form = document.getElementById("createForm");
             // form.reset();
-        // }
+        }
     }
 
     return (
@@ -101,7 +99,8 @@ const CreateNew = () => {
                     <hr className='mt-2 w-[80%]' />
                     {type === "Invester" ?
                         <>
-                            <form id="createForm" onSubmit={(e) => handleSubmit(e)} className='flex flex-col max-w-[400px] flex-wrap gap-2' >
+                        {/* onSubmit={(e) => handleSubmit(e)} */}
+                            <form id="createForm"  className='flex flex-col max-w-[400px] flex-wrap gap-2' >
                                 <div className='flex flex-wrap gap-2'>
                                     <input type="text" value={firstname} onChange={(e) => setfirstName(e.target.value)} className='form-input' required placeholder='First Name' />
                                     <input type="text" value={lastname} onChange={(e) => setLastName(e.target.value)} className='form-input' required placeholder='Last Name' />
@@ -112,7 +111,7 @@ const CreateNew = () => {
 
                                 <div className='flex flex-wrap gap-2'>
                                     <input type="number" value={age} onChange={(e) => setAge(e.target.value)} className='form-input' min="18" required placeholder='Age' />
-                                    <select className='form-input' onChange={(e) => setGender(e.target.value)} name="gender" id="gender">
+                                    <select className='form-input' onChange={(e) => setGender(e.target.value)} required name="gender" id="gender">
                                         <option value="">Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -151,13 +150,13 @@ const CreateNew = () => {
                                     })}
                                 </div>
 
-                                <button type='submit' className='form-btn'>Sign Up</button>
+                                <button type='submit' onClick={handleSubmit} className='form-btn'>Sign Up</button>
                             </form>
                         </>
                         :
                         <>
 
-                            <form id="createForm" onSubmit={(e) => handleSubmit(e)} className='flex flex-col max-w-[400px] flex-wrap gap-2' >
+                            <form id="createForm"   className='flex flex-col max-w-[400px] flex-wrap gap-2' >
                                 <div className='flex flex-wrap gap-2'>
                                     <input type="text" value={firstname} onChange={(e) => setfirstName(e.target.value)} className='form-input' required placeholder='First Name' />
                                     <input type="text" value={lastname} onChange={(e) => setLastName(e.target.value)} className='form-input' required placeholder='Last Name' />
@@ -175,7 +174,7 @@ const CreateNew = () => {
                                 </div>
                                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className='form-input' required placeholder='Email Address' />
                                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className='form-input' required placeholder='Password' />
-                                <button type='submit' className='form-btn'>Sign Up</button>
+                                <button type='submit' onClick={handleSubmit} className='form-btn'>Sign Up</button>
                             </form>
                         </>}
                 </div>

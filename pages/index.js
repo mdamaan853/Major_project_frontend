@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 // import reload from '';
 
 export default function Home() {
-
   useEffect(() => {
     const { pathname } = Router;
     const token = localStorage.getItem("authToken")
@@ -28,4 +27,3 @@ export default function Home() {
     </div>
   )
 }
-

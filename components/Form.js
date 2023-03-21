@@ -14,10 +14,6 @@ const Form = () => {
     //     console.log(form1)
     // }
     
-
-
-
-
     return (
         <form className='bg-white flex max-w-[1200px] h-[600px] gap-8 rounded-xl drop-shadow-xl p-10  w-full'>
            

@@ -20,6 +20,7 @@ const Login = () => {
     const handleLogin = async(e)=>{
       e.preventDefault();
       const res = await login({email,password});
+      console.log(res)
       const {authToken} = res;
       localStorage.setItem("authToken",authToken);
       Router.push('/main/profile')

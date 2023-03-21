@@ -4,23 +4,23 @@ export const createUser = async(payload)=>{
     console.log(url)
     console.log("hello")
     console.log(payload)
-    debugger
-    // try{
-    //     const res = await fetch(`http://localhost:3001/api/v1/createuser`,
-    //     {
-    //         mode:"no-cors",
-    //         method:"POST",
-    //         headers:{
-    //             'Content-Type':'application/json',
-    //         },
-    //         body:JSON.stringify(payload)
-    //     })
-    //     const data = res.json();
-    //     return data;   
-    // }
-    // catch(err){
-    //     console.log(err)
-    // }
+    try{
+        const res = await fetch(`http://localhost:3001/api/v1/createuser`,
+        {
+            mode:"no-cors",
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json',
+                // "Access-Control-Allow-Origin": "https://localhost:3000"
+            },
+            body:JSON.stringify(payload)
+        })
+        const data = res.json();
+        return data;   
+    }
+    catch(err){
+        console.log(err)
+    }
 }
 
 export const login = async (payload) => {
