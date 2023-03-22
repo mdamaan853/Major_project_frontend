@@ -28,9 +28,12 @@ export const login = async (payload) => {
         const res = await fetch(`${url}/api/v1/login`,{
             method:"POST",
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                "Access-Control-Allow-Origin":  "http://127.0.0.1:3001",
+                "Access-Control-Allow-Methods": "*"
             },
             body:JSON.stringify(payload)
+            // body:payload
         })
         const data = await res.json();
         console.log(data);

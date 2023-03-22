@@ -8,12 +8,14 @@ const Login = () => {
     const[email,setEmail] = useState("");
     const[password,setPassword] = useState("");
     
+
+
     useEffect(()=>{
-      const token = localStorage.getItem("authToken")
-      if(token){
-        Router.push('/main/profile');
-        return;
-      }
+      // const token = localStorage.getItem("authToken")
+      // if(token){
+        // Router.push('/main/profile');
+        // return;
+      // }
       
     },[])
 
@@ -21,9 +23,11 @@ const Login = () => {
       e.preventDefault();
       const res = await login({email,password});
       console.log(res)
-      const {authToken} = res;
-      localStorage.setItem("authToken",authToken);
-      Router.push('/main/profile')
+      if(res?.success){
+        localStorage.setItem("authToken",res.authToken);
+        localStorage.setItem("user",res.user);
+        Router.push('/main/profile')
+      }
     }
 
   
